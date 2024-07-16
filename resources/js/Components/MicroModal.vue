@@ -60,7 +60,7 @@ const searchCustomers = async () => {
                             </thead>
                             <tbody>
                                 <tr v-for="customer in customers.value.data" :key="customer.id">
-                                    <td class="border-b-2 border-gray-200 px-4 py-3">
+                                    <td class="border-b-2 text-blue-500 border-gray-200 px-4 py-3">
                                         <button type="button" @click="setCustomer({id: customer.id, kana:customer.kana})">{{ customer.id }}</button>
                                     </td>
                                     <td class="border-b-2 border-gray-200 px-4 py-3">{{ customer.name }}</td>
