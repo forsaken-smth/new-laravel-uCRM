@@ -7,7 +7,9 @@ use Inertia\Inertia;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\AnalysisController;
 
+Route::get('analysis', [AnalysisController::class, 'index'])->name('analysis');
 
 Route::resource('items', ItemController::class)
 ->middleware(['auth', 'verified']); 
@@ -26,9 +28,6 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
-
-
-Route::get('/searchCustomer', [CustomerController::class, 'searchCustomer']);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

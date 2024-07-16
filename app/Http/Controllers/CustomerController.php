@@ -13,11 +13,6 @@ class CustomerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function searchCustomer(Request $request){
-        return Customer::searchCustomers($request->search)
-        ->select('id', 'name', 'kana', 'tel')->paginate(50);
-    }
-
     public function index(Request $request)
     {   
         // $getTest = Customer::select('id', 'name', 'kana', 'tel')->get();

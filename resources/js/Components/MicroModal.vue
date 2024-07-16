@@ -16,7 +16,13 @@ const setCustomer = e => {
 
 const searchCustomers = async () => {
   try {
-    await axios.get(`/searchCustomer/?search=${search.value} `).then(
+    await axios({
+        method: 'get',
+        url: '/api/searchCustomer',
+        data: {
+            search: `${search.value}`
+        }
+    }).then(
         res => {
             console.log(res.data)
             customers.value = res.data
