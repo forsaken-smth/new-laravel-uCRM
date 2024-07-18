@@ -54,10 +54,18 @@ const getData = async () => {
                         <div class="container px-5 py-10 mx-auto">
                             <div class="lg:w-2/3 w-full mx-auto overflow-auto">
                             <form @submit.prevent="getData">
-                                <input type="date" name="startDate" id="startDate" v-model="form.startDate">
-                                <input type="date" name="endDate" id="endDate" v-model="form.endDate">
+                                <span>分析方法</span><br>
+                                <input type="radio" id="perDay" v-model="form.type" value="PerDay" class="ml-2" checked><label for="perDay" class="ml-2">日別</label>
+                                <input type="radio" id="perMonth" v-model="form.type" value="PerMonth" class="ml-2"><label for="perMonth" class="ml-2">月別</label>
+                                <input type="radio" id="perYear" v-model="form.type" value="PerYear" class="ml-2"><label for="perYear" class="ml-2">年別</label>
+                                <br>
+
+                                <div class="mt-2">
+                                    <label>From:</label><input type="date" name="startDate" id="startDate" v-model="form.startDate">
+                                    <label>To:</label><input type="date" name="endDate" id="endDate" v-model="form.endDate">
+                                </div>
                                 <button
-                                    class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">分析する</button>
+                                    class="flex mx-auto text-white bg-indigo-500 border-0 my-4 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">分析する</button>
                             </form>
 
                             <Chart v-show="data.data" :data="data"/>

@@ -13,12 +13,12 @@ class AnalysisController extends Controller
         $startDate = '2022-08-01';
         $endDate = '2022-08-31';
 
-        // $period = Order::betweenDate($startDate, $endDate)
-        // ->groupBy('id')
-        // ->selectRaw('id, sum(subTotal) as total,
-        // customer_name, status, created_at')
-        // ->orderBy('created_at')
-        // ->paginate(50);
+        $period = Order::betweenDate($startDate, $endDate)
+        ->groupBy('id')
+        ->selectRaw('id, sum(subTotal) as total,
+        customer_name, status, created_at')
+        ->orderBy('created_at')
+        ->paginate(50);
 
         $subQuery = Order::betweenDate($startDate, $endDate)
         ->where('status',true)
@@ -30,8 +30,6 @@ class AnalysisController extends Controller
         ->groupBy('date')
         ->selectRaw('date, sum(totalPerPerchase) as toyal')
         ->get();
-
-        // dd($data);
 
         return Inertia::render('Analysis');
     }
